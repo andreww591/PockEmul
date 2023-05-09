@@ -46,8 +46,8 @@
 
 #include "filt.h"
 
-#include "ganalytics.h"
-extern GAnalytics* tracker;
+/*#include "ganalytics.h"
+extern GAnalytics* tracker;*/
 
 extern QList<CPObject *> listpPObject;  /**< TODO: describe */
 extern CrenderView* view;
@@ -2050,8 +2050,8 @@ void CPObject::slotExit(void)
     }
 
 	toDestroy = true;
-    tracker->sendEvent("App","Close Pocket",getName());
-    tracker->startSending();
+    /*tracker->sendEvent("App","Close Pocket",getName());
+    tracker->startSending();*/
 }
 
 /**

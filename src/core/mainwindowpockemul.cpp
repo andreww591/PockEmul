@@ -71,8 +71,10 @@ PockEmul is a Sharp Pocket Computer Emulator.
 
 #include "allobjects.h"
 
+/*
 #include "ganalytics.h"
 extern GAnalytics* tracker;
+*/
 
 extern MainWindowPockemul* mainwindow;
 extern CrenderView* view;
@@ -878,8 +880,8 @@ CPObject * MainWindowPockemul::LoadPocket(int result, QString _cfg) {
                 }
                 else
                 {
-                    tracker->sendEvent("App","Start Pocket",newpPC->getName());
-                    tracker->startSending();
+                    /*tracker->sendEvent("App","Start Pocket",newpPC->getName());
+                    tracker->startSending();*/
 
                     AddLog(LOG_MASTER,tr("%1").arg((quint64)newpPC));
                     listpPObject.append(newpPC);
@@ -1145,8 +1147,8 @@ void MainWindowPockemul::opensession(QXmlStreamReader *xml) {
 
 bool MainWindowPockemul::quitPockEmul()
 {
-    tracker->endSession();
-    tracker->startSending();
+    /*tracker->endSession();
+    tracker->startSending();*/
 
     if (ask(this,"Do you really want to quit ?",2)==1) {
 
@@ -1160,7 +1162,7 @@ bool MainWindowPockemul::quitPockEmul()
         return true;
     }
     else {
-        tracker->startSession();
+        //tracker->startSession();
         return false;
     }
 
@@ -1629,8 +1631,8 @@ void MainWindowPockemul::toggleFullscreen()
 
     qWarning()<<"fullscreen:"<<((windowState() & Qt::WindowFullScreen) ? "on" : "off");
 
-    tracker->sendEvent("App","Fullscreen",(windowState() & Qt::WindowFullScreen) ? "on" : "off");
-    tracker->startSending();
+    //tracker->sendEvent("App","Fullscreen",(windowState() & Qt::WindowFullScreen) ? "on" : "off");
+    //tracker->startSending();
 }
 
 void MainWindowPockemul::resizeEvent		( QResizeEvent * event ){

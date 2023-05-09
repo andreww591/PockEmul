@@ -18,10 +18,10 @@
 #include "ui/windowide.h"
 #include "binarydata.h"
 #include "laserfilter.h"
-
+/*
 #include "ganalytics.h"
 extern GAnalytics *tracker;
-
+*/
 extern MainWindowPockemul *mainwindow;
 extern int ask(QWidget *parent, QString msg, int nbButton);
 extern void m_addShortcut(QString name,QString param);
@@ -403,8 +403,8 @@ void CrenderView::sendTrackingEvent(const QString &cat,
                                     const QString &label,
                                     const QVariant &value)
 {
-    tracker->sendEvent(cat,action,label,value);
-    tracker->startSending();
+    /*tracker->sendEvent(cat,action,label,value);
+    tracker->startSending();*/
 }
 
 void CrenderView::fillSlotList(void)

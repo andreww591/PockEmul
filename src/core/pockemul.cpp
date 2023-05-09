@@ -44,9 +44,10 @@ int vibDelay;
 #include <QAndroidJniObject>
 
 #endif
-
+/*
 #include "ganalytics.h"
 GAnalytics *tracker;
+*/
 
 
 MainWindowPockemul* mainwindow;
@@ -231,7 +232,6 @@ int main(int argc, char *argv[])
 #endif
 
     settings = new QSettings(workDir+"config.ini",QSettings::IniFormat);
-
     QString _Id = Cloud::getValueFor("uniqueId","0000");
     if (_Id=="0000") {
         uniqueId = QUuid::createUuid();
@@ -242,7 +242,7 @@ int main(int argc, char *argv[])
     }
 
     qWarning()<<"uniqueId"<<uniqueId;
-
+#if 0
     tracker = new GAnalytics("UA-82656903-1");
 
     tracker->setUserID(uniqueId.toString().mid(1,36));
@@ -266,10 +266,8 @@ int main(int argc, char *argv[])
 
     tracker->startSession();
     tracker->sendAppView("main");
-
+#endif
     vibDelay = Cloud::getValueFor("vibDelay","50").toInt();
-
-
 
     mainwindow = new MainWindowPockemul();
 
@@ -375,8 +373,8 @@ int main(int argc, char *argv[])
         dev->show();
         save->show();
         load->show();
-        cloudButton->show();
-        bookcase->show();
+        //cloudButton->show();
+        //bookcase->show();
         exitButton->show();
         qWarning()<<"end fullopengl";
     }
@@ -494,7 +492,8 @@ void buildMenu() {
     v_pos += v_inter;
     load->setToolTip("Load an existing session.");
 
-#ifdef P_CLOUD
+//#ifdef P_CLOUD
+#if 0
     cloudButton = new LaunchButtonWidget(mainwindow->centralwidget,
                                                      LaunchButtonWidget::Action,
                                                      QStringList(),
@@ -506,7 +505,7 @@ void buildMenu() {
     v_pos += v_inter;
     cloudButton->setToolTip("Go to the Cloud.");
 #endif
-
+#if 0
     bookcase = new LaunchButtonWidget(mainwindow->centralwidget,
                                                       LaunchButtonWidget::FileBrowser,
                                                           QStringList()<< (downloadManager->targetDir)<<"*.pdf",
@@ -517,7 +516,7 @@ void buildMenu() {
 
     v_pos += v_inter;
     bookcase->setToolTip("Browse the bookcase.");
-
+#endif
     exitButton = new LaunchButtonWidget(mainwindow->centralwidget,
                                                       LaunchButtonWidget::Action,
                                                       QStringList(),

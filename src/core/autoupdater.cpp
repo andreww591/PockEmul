@@ -26,8 +26,8 @@
 #define POCKEMUL_UPDATE_FILE "http://pockemul.free.fr/update/autoupdater.txt"
 #define POCKEMUL_DOWNLOAD_SITE "https://github.com/pockemul/PockEmul/releases"
 
-#include "ganalytics.h"
-extern GAnalytics *tracker;
+/*#include "ganalytics.h"
+extern GAnalytics *tracker;*/
 
 extern MainWindowPockemul* mainwindow;
 extern int ask(QWidget *parent,QString msg,int nbButton);
@@ -58,8 +58,8 @@ CAutoUpdater::CAutoUpdater(QWidget *parent)
 	setLayout(mainLayout);
 	
 	setWindowTitle(tr("Check Updates"));
-    tracker->sendEvent("App","Check for update");
-    tracker->startSending();
+    //tracker->sendEvent("App","Check for update");
+    //tracker->startSending();
 	downloadFile();
 }
 
@@ -94,8 +94,8 @@ void CAutoUpdater::downloadFinished(QNetworkReply *reply)
         qWarning()<<result;
         if (result.replace(".","").toInt() > QString(POCKEMUL_VERSION).replace(".","").toInt()){
             ask(this, tr("A new release is available\nCheck Web Site : ")+POCKEMUL_DOWNLOAD_SITE,1);
-            tracker->sendEvent("App","Check for update","New release available");
-            tracker->startSending();
+            /*tracker->sendEvent("App","Check for update","New release available");
+            tracker->startSending();*/
 
             close();
         }
