@@ -86,7 +86,7 @@ public:
     float	zoom;
     bool openGlFlag;
 
-    QString loadPML,runPocket;
+    QString loadPML,runPocket,configDir;
 
     QSlider *zoomSlider;
 

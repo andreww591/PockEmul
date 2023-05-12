@@ -213,13 +213,20 @@ int main(int argc, char *argv[])
     QApplication::setLibraryPaths(QStringList(tmpdir.absolutePath()));
     qWarning()<<QApplication::libraryPaths();
 #endif
+    QString configDir = qEnvironmentVariable("POCKEMUL_HOME");
+    if (!configDir.isEmpty()){
+        workDir = configDir;
+        if (!workDir.endsWith("/")){
+            workDir = workDir + "/";
+        }
+    }else{
+        QDir home = QDir::home();
+        if (!home.exists("pockemul")) {
+            home.mkpath("pockemul/documents");
+        }
 
-    QDir home = QDir::home();
-    if (!home.exists("pockemul")) {
-        home.mkpath("pockemul/documents");
+        workDir = QDir::homePath()+"/pockemul/";
     }
-
-    workDir = QDir::homePath()+"/pockemul/";
 
 #ifdef Q_OS_ANDROID
 

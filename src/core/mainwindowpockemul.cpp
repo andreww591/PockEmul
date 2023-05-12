@@ -1796,6 +1796,9 @@ void MainWindowPockemul::optionFound(const QString & name, const QVariant & valu
   if (name == "run") {
       runPocket = value.toString();
   }
+  if (name == "configdir") {
+      configDir = value.toString();
+  }
 
 }
 
